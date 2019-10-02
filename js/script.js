@@ -1,69 +1,69 @@
 {
-  const titleClickHandler = function(event){
-  const clickedElement = this;
-  console.log('Link was clicked!');
+  const titleClickHandler = function (event) {
+    const clickedElement = this;
+    console.log('Link was clicked!');
 
-  /* remove class 'active' from all article links  */
+    /* remove class 'active' from all article links  */
 
-  const activeLinks = document.querySelectorAll('.titles a.active');
+    const activeLinks = document.querySelectorAll('.titles a.active');
 
-  for(let activeLink of activeLinks){
-    activeLink.classList.remove('active');
-  }
+    for (let activeLink of activeLinks) {
+      activeLink.classList.remove('active');
+    }
 
-  /* add class 'active' to the clicked link */
+    /* add class 'active' to the clicked link */
 
-  clickedElement.classList.add('active');
-  console.log('Add active to clickedElement:', clickedElement);
-  
-  /* remove class 'active' from all articles */
+    clickedElement.classList.add('active');
+    console.log('Add active to clickedElement:', clickedElement);
 
-  const activeArticles = document.querySelectorAll('.posts .active');
+    /* remove class 'active' from all articles */
 
-  for(let activeArticle of activeArticles){
-    activeArticle.classList.remove('active');
-  }
+    const activeArticles = document.querySelectorAll('.posts .active');
 
-  /* get 'href' attribute from the clicked link */
+    for (let activeArticle of activeArticles) {
+      activeArticle.classList.remove('active');
+    }
 
-  const articleSelector = clickedElement.getAttribute('href');
-  console.log('clicked href:', articleSelector);
- 
-  /* find the correct article using the selector (value of 'href' attribute) */
+    /* get 'href' attribute from the clicked link */
 
-  const targetArticle = document.querySelector(articleSelector);
-  console.log('value of href:', targetArticle);
+    const articleSelector = clickedElement.getAttribute('href');
+    console.log('clicked href:', articleSelector);
 
-  /* add class 'active' to the correct article */
+    /* find the correct article using the selector (value of 'href' attribute) */
 
-  targetArticle.classList.add('active');
-  console.log('active article:', targetArticle);
+    const targetArticle = document.querySelector(articleSelector);
+    console.log('value of href:', targetArticle);
 
-  event.preventDefault();
+    /* add class 'active' to the correct article */
+
+    targetArticle.classList.add('active');
+    console.log('active article:', targetArticle);
+
+    event.preventDefault();
   }
 
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
 
-  function generateTitleLinks(){
+  function generateTitleLinks() {
 
-  /* remove contents of titleList */
+    /* remove contents of titleList */
 
-  const titleList = document.querySelector(optTitleListSelector);
-  console.log('titleList', titleList);
-  titleList.innerHTML = '';
+    const titleList = document.querySelector(optTitleListSelector);
+    console.log('titleList', titleList);
+    titleList.innerHTML = '';
 
-  /* for each article */
+    /* for each article */
 
-  const articles = document.querySelectorAll(optArticleSelector);
-  console.log('articles', articles);
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log('articles', articles);
 
-  let html = '';
+    let html = '';
 
-    for(let article of articles){
+    for (let article of articles) {
 
-    /* get the article id */
+      /* get the article id */
 
       const articleId = article.getAttribute('id')
       console.log('articleId', articleId);
@@ -84,14 +84,14 @@
       console.log('html', html);
     }
 
-  titleList.innerHTML = html;
+    titleList.innerHTML = html;
 
-  const links = document.querySelectorAll('.titles a');
-  for(let link of links){
-    link.addEventListener('click', titleClickHandler);
+    const links = document.querySelectorAll('.titles a');
+    for (let link of links) {
+      link.addEventListener('click', titleClickHandler);
     }
-}
+  }
 
-generateTitleLinks();
+  generateTitleLinks();
 
 }
