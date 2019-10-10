@@ -165,3 +165,10 @@ body {
   font-size: $tag-font-size5;
   color: $tag-color-size5;
 }
+
+/*Authors*/
+
+.authors li {
+  display: inline-block;
+  line-height: normal;
+}
