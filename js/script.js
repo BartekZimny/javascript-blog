@@ -49,7 +49,8 @@
     optArticleTagSelector = '.post-tags a',
     optTagsListSelector = '.list.tags a',
     optArticleAuthorSelector = '.post-author',
-    optArticleAuthorSelectorLink = '.post-author a';
+    optArticleAuthorSelectorLink = '.post-author a',
+    optCloudClassCount = 5;
 
   function generateTitleLinks(customSelector = ' ') {
 
@@ -99,6 +100,48 @@
 
   generateTitleLinks();
 
+
+
+  // [VERY NEW] create a new variable object params with max and min value
+function calculateTagsParams(tags) {
+  const params = {
+    max: 0,
+    min: 999999
+  }
+  // [VERY NEW] START LOOP for every tags
+  for (let tag in tags) {
+    //console.log(tag + ' is used ' + tags[tag] + ' times ');
+    /* first option - standard if*/
+    // [VERY NEW] set value for params.max as tags[tag] only if the value is higher than current
+    if (tags[tag] > params.max) {
+      params.max = tags[tag];
+      //console.log('params.max:', params.max);
+    }
+    if (tags[tag] < params.min) {
+      params.min = tags[tag];
+      //console.log('params.min:', params.min);
+    }
+    //params.max = tags[tag];
+    /* second option - short if */
+    //params.max = tags[tag] > params.max ? tags[tag] : params.max;
+    /* third option - math.max */
+    //params.max = Math.max(tags[tag], params.max);
+  }
+  return params;
+}
+function calculateTagClass(count, params){
+//console.log('calculateTagClass:', calculateTagClass, 'count:' ,count, 'params:', params);
+  const normalizedCount = count - params.min;
+  //console.log('normalizedCount:', normalizedCount);
+  const normalizedMax = params.max - params.min;
+  //console.log('normalizedMax:', normalizedMax);
+  const percentage = normalizedCount / normalizedMax;
+  //console.log('percentage:', percentage);
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+  //console.log('classNumber:', classNumber);
+  return classNumber;
+}
+
   function generateTags() {
 
     /* [NEW] create a new variable allTags with an empty object */
@@ -124,7 +167,7 @@
 
       /* split tags into array */
       const articleTagsArray = articleTags.split(' ');
-      console.log('articleTagsArray', articleTagsArray);
+      console.log('articleTagsArray:', articleTagsArray);
 
       /* START LOOP: for each tag */
       for (let tag of articleTagsArray) {
@@ -132,11 +175,11 @@
 
         /* generate HTML of the link */
         const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>' + ' ';
-        console.log('linkHTML', linkHTML);
+        console.log('linkHTML:', linkHTML);
 
         /* add generated code to html variable */
         html = html + linkHTML;
-        console.log('html', html);
+        console.log('html:', html);
 
         /* [NEW] check if this link is NOT already in allTags */
         if (!allTags.hasOwnProperty(tag)) {
@@ -161,14 +204,20 @@
     //tagList.innerHTML = allTags.join(' ');
     //console.log(allTags);
 
-    /* [NEW] acreate variable for all links HTML code */
+    /* [NEW] create variable for all links HTML code */
+    const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
     let allTagsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for (let tag in allTags) {
-      
+
       /* [NEW] generate code of link and add it to allTagHTML */
-      allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+      const tagLinkHTML = '<li><a class>"' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
+      allTagsHTML += '<li><a class ="tag-size-' + calculateTagClass(allTags[tag], tagsParams) +'" href="#tag-' + tag + '"><span>' + tag + '</span></a>' + ' (' + allTags[tag] + ') </li>';
+    
+      //allTagsHTML += tagLinkHTML;
+      console.log('allTagsHTML:', allTagsHTML);
     }
 
     /* [NEW] END LOOP: for each tag in allTags: */
