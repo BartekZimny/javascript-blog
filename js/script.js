@@ -206,7 +206,7 @@ function calculateTagClass(count, params){
 
     /* [NEW] create variable for all links HTML code */
     const tagsParams = calculateTagsParams(allTags);
-  console.log('tagsParams:', tagsParams);
+    console.log('tagsParams:', tagsParams);
     let allTagsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allTags: */
@@ -214,7 +214,7 @@ function calculateTagClass(count, params){
 
       /* [NEW] generate code of link and add it to allTagHTML */
       const tagLinkHTML = '<li><a class>"' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
-      allTagsHTML += '<li><a class ="tag-size-' + calculateTagClass(allTags[tag], tagsParams) +'" href="#tag-' + tag + '"><span>' + tag + '</span></a>' + ' (' + allTags[tag] + ') </li>';
+      allTagsHTML += '<li><a class="tag-size-' + calculateTagClass(allTags[tag], tagsParams) +'" href="#tag-' + tag + '"><span>' + tag + '</span></a>' + ' (' + allTags[tag] + ') </li>';
     
       //allTagsHTML += tagLinkHTML;
       console.log('allTagsHTML:', allTagsHTML);
