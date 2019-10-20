@@ -1,4 +1,9 @@
 {
+
+  const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+  }
+
   const titleClickHandler = function (event) {
     const clickedElement = this;
     console.log('Link was clicked!');
@@ -67,8 +72,13 @@
       console.log('articleTitle', articleId);
 
       /* create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      //old version
+      //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      //new handlebars version
+      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTML = templates.articleLink(linkHTMLData);
       console.log('html link:', linkHTML);
+      
 
       /* insert link into titleList */
       html = html + linkHTML;
