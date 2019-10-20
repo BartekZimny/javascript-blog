@@ -1,7 +1,7 @@
 {
 
   const templates = {
-  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
   }
 
   const titleClickHandler = function (event) {
@@ -75,10 +75,10 @@
       //old version
       //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
       //new handlebars version
-      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTMLData = { id: articleId, title: articleTitle };
       const linkHTML = templates.articleLink(linkHTMLData);
       console.log('html link:', linkHTML);
-      
+
 
       /* insert link into titleList */
       html = html + linkHTML;
@@ -338,7 +338,7 @@
       //console.log(html);
 
       /* get authors from data-author attribute */
-      const articleAuthor = authorArticle.getAttribute('data-authors');
+      const articleAuthor = authorArticle.getAttribute('data-author');
       //console.log('articleAuthor:', articleAuthor);
 
       /* generate HTML of the link */
@@ -413,7 +413,7 @@
       /* remove class active */
       activeAuthor.classList.remove('active');
       //console.log('activeAuthor:', activeAuthor);
-      
+
       /* END LOOP: for each active author link */
     }
     /* find all auithor links with "href" attribute equal to the "href" constant */
@@ -429,7 +429,7 @@
       /* END LOOP: for each found author link */
     }
     /* execute function "generateTitleLinks" with author selector as argument */
-    generateTitleLinks('[data-authors="' + author + '"]');
+    generateTitleLinks('[data-author="' + author + '"]');
     //console.log(generateTitleLinks);
   }
 
