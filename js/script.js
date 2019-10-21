@@ -342,7 +342,7 @@
       //console.log('articleAuthor:', articleAuthor);
 
       /* generate HTML of the link */
-      const linkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>' + ' ';
+      const linkHTML = '<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>' + ' ';
       //console.log('linkHTML:', linkHTML);
 
       /* add generated code to html variable */
