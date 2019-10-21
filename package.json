@@ -36,7 +36,6 @@
     "nu-html-checker": "^0.1.0",
     "onchange": "^5.2.0",
     "stylelint": "^11.0.0",
-    "stylelint-scss": "^3.11.1",
-    "superagent": "^5.1.0"
+    "stylelint-scss": "^3.11.1"
   }
 }
