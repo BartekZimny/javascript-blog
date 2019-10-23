@@ -29,6 +29,7 @@
     "browser-sync": "^2.26.3",
     "editorconfig": "^0.15.3",
     "eslint": "^6.5.1",
+    "eslint-plugin-vue": "^5.2.3",
     "globstar": "^1.0.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.11.0",
