@@ -240,6 +240,17 @@
     <li><a href="#tag-{{ id }}"><span>{{ title }}</span></a></li>
   </script>
 
+  <script id="template-tagcloud-link" type="text/x-handlebars-template">
+    {{#each tags}}
+      <li><a href="#tag-{{ tag }}" class="tag-size-{{ className }}">{{ tag }} </a></li><li> ({{ count }})</li>
+    {{/each}}
+  </script>
+  <script id="template-authorcloud-link" type="text/x-handlebars-template">
+    {{#each authors}}
+      <li><a href="#author-{{ author }}" class="tag-size-{{ className }}">{{ author }} </a></li><li> ({{ count }})</li>
+    {{/each}}
+  </script>
+
   <script src="js/script.js"></script>
 </body>
 
